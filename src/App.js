@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {AiOutlineMenu} from 'react-icons/all';
+import List from "./components/List/List";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <div className="todo">
+            <div className={"todo__sidebar"}>
+                <List items={[
+                    {
+                        icon: <AiOutlineMenu/>,
+                        name: 'All tasks',
+                        active: true
+                    }
+                ]}
+                      isRemovable={true}
+                />
+                <List items={[
+                {
+                    color: 'green',
+                    name: 'For buy'
+                },
+                {
+                    color: 'blue',
+                    name: 'Frontend'
+                },
+                {
+                    color: 'pink',
+                    name: 'Movie and serials'
+                },
+            ]}/>
+            </div>
+            <div className={"todo__tasks"}>
+            </div>
+        </div>
+    );
+};
 
 export default App;

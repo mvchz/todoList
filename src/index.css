@@ -31,4 +31,31 @@ code {
   padding: 60px 20px;
 }
 
+.button {
+  color: #ffffff;
+  background: #4DD599;
+  border-radius: 4px;
+  border: 0;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.button:hover {
+  background: #34cf8b;
+}
+.button:active {
+  background: #2cb97b;
+}
+
+.field {
+  background: #FFFFFF;
+  border: 1px solid #EFEFEF;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 8px 12px;
+  width: 100%;
+}
+.field:focus {
+  border-color: #dbdbdb;
+}
+
 /*# sourceMappingURL=index.css.map */

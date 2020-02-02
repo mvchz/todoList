@@ -1,0 +1,42 @@
+.add-list {
+  background: white;
+}
+.add-list__popup {
+  width: 235px;
+  height: 150px;
+  background: #FFFFFF;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 18px;
+  position: relative;
+  top: -25px;
+  left: 10px;
+}
+.add-list__popup button {
+  width: 100%;
+  margin-top: 15px;
+}
+.add-list__popup-close-btn {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  cursor: pointer;
+  font-size: 22px;
+}
+.add-list__popup-colors {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.add-list__popup-colors .badge {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  position: static;
+  border: 2px solid transparent;
+}
+.add-list__popup-colors .badge.active {
+  border: 2px solid #525252;
+}
+
+/*# sourceMappingURL=AddList.css.map */

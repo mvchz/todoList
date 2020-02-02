@@ -1,6 +1,12 @@
 .list {
   margin-bottom: 30px;
 }
+.list__add-button {
+  opacity: 0.4;
+}
+.list__add-button:hover {
+  opacity: 1;
+}
 .list li {
   display: flex;
   align-items: center;
@@ -15,23 +21,7 @@
 .list li i {
   display: inline-flex;
   margin-right: 10px;
-  color: #7c7c7c;
-}
-.list li .badge {
-  width: 10px;
-  height: 10px;
-  border-radius: 30px;
-  position: relative;
-  left: 3px;
-}
-.list li .badge--green {
-  background: #42B883;
-}
-.list li .badge--blue {
-  background: #64C4ED;
-}
-.list li .badge--pink {
-  background: #FFBBCC;
+  font-size: 18px;
 }
 
 /*# sourceMappingURL=List.css.map */

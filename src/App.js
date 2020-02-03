@@ -1,11 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {AiOutlineMenu} from 'react-icons/all';
 import List from "./components/List/List";
 import AddList from "./components/List/AddList/AddList";
 
 import DB from './db/db';
+import Tasks from "./components/Tasks/Tasks";
 
 const App = () => {
+    const [lists, setLists] = useState(
+        DB.lists.map(item => {
+            item.color = DB.colors.filter(color => color.id === item.colorId)[0].name;
+            return item;
+        })
+    );
+    const onAddList = (obj) => {
+        const newList = [...lists,obj];
+        setLists(newList);
+    };
+
     return (
         <div className="todo">
             <div className={"todo__sidebar"}>
@@ -16,26 +28,16 @@ const App = () => {
                         active: true
                     }
                 ]}/>
-                <List items={[
-                    {
-                        color: 'green',
-                        name: 'For buy',
-                        active: true
-                    },
-                    {
-                        color: 'blue',
-                        name: 'Frontend'
-                    },
-                    {
-                        color: 'pink',
-                        name: 'Movie and serials'
-                    },
-                ]}
-                       isRemovable
+                <List items={lists}
+                      onRemove={list => {
+                          console.log(list);
+                      }}
+                      isRemovable
                 />
-                <AddList colors={DB.colors}/>
+                <AddList onAdd={onAddList} colors={DB.colors}/>
             </div>
             <div className={"todo__tasks"}>
+                <Tasks />
             </div>
         </div>
     );

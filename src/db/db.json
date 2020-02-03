@@ -1,6 +1,6 @@
 {
   "lists": [
-    { "id":  1, "name":  "For buy", "colorId":  5},
+    { "id":  1, "name":  "For buy", "colorId":  6},
     { "id":  2, "name":  "Frontend", "colorId":  4},
     { "id":  3, "name":  "Movie and serials", "colorId":  3},
     { "id":  4, "name":  "Books", "colorId":  2},

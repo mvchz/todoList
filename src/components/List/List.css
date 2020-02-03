@@ -1,4 +1,5 @@
 .list {
+  overflow: paged-y;
   margin-bottom: 30px;
 }
 .list__add-button {
@@ -7,11 +8,31 @@
 .list__add-button:hover {
   opacity: 1;
 }
+.list__remove-icon {
+  opacity: 0;
+  font-size: 18px;
+  padding-top: 2px;
+}
 .list li {
   display: flex;
   align-items: center;
   cursor: pointer;
   padding: 10px 12px;
+}
+.list li:hover .list__remove-icon {
+  opacity: 0.3;
+}
+.list li .list__remove-icon {
+  opacity: 0;
+}
+.list li .list__remove-icon:hover {
+  opacity: 0.8;
+}
+.list li span {
+  flex: 1;
+}
+.list li:hover {
+  background: rgba(255, 255, 255, 0.4);
 }
 .list li.active {
   background: #FFFFFF;

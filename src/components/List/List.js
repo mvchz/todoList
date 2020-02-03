@@ -2,8 +2,16 @@ import React, {Fragment} from 'react';
 import classNames from 'classnames';
 import './List.scss';
 import Badge from "./Badge/Badge";
+import {IoIosCloseCircle} from "react-icons/all";
 
-const List = ({items, isRemovable, onClick}) => {
+const List = ({items, isRemovable, onClick, onRemove}) => {
+
+    const removeList = (item) => {
+        if (window.confirm('You really wanna delete list')){
+            onRemove(item)
+        }
+    };
+
     return (
         <Fragment>
             <ul onClick={onClick} className="list">
@@ -16,6 +24,10 @@ const List = ({items, isRemovable, onClick}) => {
                                 <Badge color={item.color}/>)}
                             </i>
                             <span>{item.name}</span>
+                            {isRemovable &&
+                            <div onClick={() => removeList(item)} className='list__remove-icon'>
+                                <IoIosCloseCircle/>
+                            </div>}
                         </li>)
                 }
             </ul>

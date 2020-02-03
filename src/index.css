@@ -12,7 +12,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+body {
+  background: url("https://images7.alphacoders.com/510/thumb-1920-510173.jpg");
+}
+
 .todo {
+  display: flex;
+  background: white;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -29,6 +35,10 @@ code {
   height: calc(100% - 120px);
   border-right: 1px solid #f1f1f1;
   padding: 60px 20px;
+}
+.todo__tasks {
+  flex: 1;
+  padding: 60px;
 }
 
 .button {

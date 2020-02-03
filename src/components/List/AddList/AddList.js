@@ -5,10 +5,26 @@ import Badge from "../Badge/Badge";
 
 import './AddList.scss'
 
-const AddList = ({colors}) => {
+const AddList = ({colors, onAdd}) => {
     const [visiblePopup, setVisiblePopup] = useState(false);
     const [selectedColor, selectColor] = useState(colors[0].id);
+    const [inputValue, setInputValue] = useState('');
 
+    const onClose = () => {
+        setVisiblePopup(false);
+        setInputValue("");
+        selectColor(colors[0].id)
+    };
+
+    const addList = () => {
+        if(!inputValue) {
+            alert('Enter list name');
+            return;
+        }
+        const color = colors.filter(c => c.id === selectedColor)[0].name;
+        onAdd({id: Math.random(), name: inputValue, color});
+        onClose();
+    };
     return (
         <>
             <List onClick={() => setVisiblePopup(!visiblePopup)} items={[
@@ -20,8 +36,13 @@ const AddList = ({colors}) => {
             ]}
             />
             {visiblePopup && <div className='add-list__popup'>
-                <div onClick={() => setVisiblePopup(false)} className={"add-list__popup-close-btn"}><IoIosCloseCircle /> </div>
-                <input className={`field`} type="text" placeholder={'List Name'}/>
+                <div onClick={() => onClose()} className={"add-list__popup-close-btn"}><IoIosCloseCircle /> </div>
+                <input value={inputValue}
+                       onChange={e => setInputValue(e.target.value)}
+                       className={`field`}
+                       type="text"
+                       placeholder={'List Name'}
+                />
                 <div className={'add-list__popup-colors'}>
                     {
                         colors.map(color => (
@@ -32,7 +53,7 @@ const AddList = ({colors}) => {
                             />
                             ))}
                 </div>
-                <button className={`button`}>Add</button>
+                <button onClick={addList} className={`button`}>Add</button>
             </div>}
         </>
     );

@@ -24,6 +24,7 @@
 }
 .list li .list__remove-icon {
   opacity: 0;
+  transition: opacity 0.15s ease-in-out;
 }
 .list li .list__remove-icon:hover {
   opacity: 0.8;

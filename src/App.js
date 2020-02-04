@@ -1,20 +1,24 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {AiOutlineMenu} from 'react-icons/all';
-import List from "./components/List/List";
-import AddList from "./components/List/AddList/AddList";
-
-import DB from './db/db';
-import Tasks from "./components/Tasks/Tasks";
+import {AddList, List, Tasks} from './components'
+import * as axios from "axios";
 
 const App = () => {
-    const [lists, setLists] = useState(
-        DB.lists.map(item => {
-            item.color = DB.colors.filter(color => color.id === item.colorId)[0].name;
-            return item;
-        })
-    );
+    const [lists, setLists] = useState(null);
+    const [colors, setColors] = useState(null);
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/lists?_expand=color&_embed=tasks').then(({data}) => {
+                setLists(data);
+            console.log(data);
+        });
+        axios.get('http://localhost:3001/colors').then(({data}) => {
+                setColors(data);
+            })
+    }, []);
+
     const onAddList = (obj) => {
-        const newList = [...lists,obj];
+        const newList = [...lists, obj];
         setLists(newList);
     };
 
@@ -28,16 +32,19 @@ const App = () => {
                         active: true
                     }
                 ]}/>
-                <List items={lists}
-                      onRemove={list => {
-                          console.log(list);
+                { lists ? (<List
+                        items={lists}
+                        onRemove={id => {
+                          const newLists = lists.filter(item => item.id !== id);
+                          setLists(newLists);
+                          console.log(newLists,lists);
                       }}
                       isRemovable
-                />
-                <AddList onAdd={onAddList} colors={DB.colors}/>
+                />) : ('Download...')}
+                <AddList onAdd={onAddList} colors={colors}/>
             </div>
             <div className={"todo__tasks"}>
-                <Tasks />
+                { lists && <Tasks list={lists[1]}/>}
             </div>
         </div>
     );

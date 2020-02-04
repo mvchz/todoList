@@ -3,23 +3,27 @@ import React from 'react';
 import './Tasks.scss';
 import {FaCheck, FiEdit3} from "react-icons/all";
 
-const Tasks = () => {
+const Tasks = ({list}) => {
+    console.log(list);
     return (
         <div className="tasks">
             <h2 className="tasks__title">
-                Frontend
+                {list.name}
                 <span><FiEdit3/></span>
             </h2>
             <div className="tasks__items">
-                <div className='tasks__items-row'>
-                    <div className="checkbox">
-                        <input id='check' type="checkbox"/>
-                        <label htmlFor="check">
-                            <FaCheck className='tick'/>
-                        </label>
-                    </div>
-                    <input value={"ReactJS Hooks (useState, useReducer, useEffect etc.)"} />
-                </div>
+                {
+                    list.tasks.map(task =>
+                        <div key={task.id} className='tasks__items-row'>
+                            <div className="checkbox">
+                                <input id={`task-${task.id}`} type="checkbox"/>
+                                <label htmlFor={`task-${task.id}`}>
+                                    <FaCheck className='tick'/>
+                                </label>
+                            </div>
+                            <input readOnly value={task.text} />
+                        </div>)
+                }
             </div>
         </div>
     );

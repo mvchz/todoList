@@ -1,14 +1,17 @@
 import React, {Fragment} from 'react';
 import classNames from 'classnames';
 import './List.scss';
-import Badge from "./Badge/Badge";
+import Badge from "../Badge/Badge";
 import {IoIosCloseCircle} from "react-icons/all";
+import * as axios from "axios";
 
 const List = ({items, isRemovable, onClick, onRemove}) => {
 
     const removeList = (item) => {
         if (window.confirm('You really wanna delete list')){
-            onRemove(item)
+            axios.delete('http://localhost:3001/lists/' + item.id).then(() => {
+               onRemove(item.id);
+            })
         }
     };
 
@@ -19,9 +22,9 @@ const List = ({items, isRemovable, onClick, onRemove}) => {
                     items.map((item, index) =>
                         <li key={index}
                             className={classNames(item.className, {'active': item.active})}>
-                            <i>{item.icon ?(
-                                item.icon) :(
-                                <Badge color={item.color}/>)}
+                            <i>{item.icon
+                                ? (item.icon)
+                                :(<Badge color={item.color.name}/>)}
                             </i>
                             <span>{item.name}</span>
                             {isRemovable &&

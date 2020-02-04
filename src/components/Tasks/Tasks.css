@@ -25,6 +25,7 @@
 .tasks__items-row {
   display: flex;
   align-items: center;
+  margin-bottom: 15px;
 }
 .tasks__items-row input {
   border: 0;

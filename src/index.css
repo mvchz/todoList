@@ -48,6 +48,7 @@ body {
   border: 0;
   padding: 10px 20px;
   cursor: pointer;
+  font-size: 14px;
 }
 .button:hover {
   background: #34cf8b;
@@ -55,8 +56,22 @@ body {
 .button:active {
   background: #2cb97b;
 }
+.button:disabled {
+  background: #d8d8d8;
+}
+.button--grey {
+  background: #adb7c7;
+  color: #444444;
+}
+.button--grey:hover {
+  background: #a4afc1;
+}
+.button--grey:active {
+  background: #9eaabd;
+}
 
 .field {
+  font-size: 14px;
   background: #FFFFFF;
   border: 1px solid #EFEFEF;
   box-sizing: border-box;

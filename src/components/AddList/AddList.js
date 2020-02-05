@@ -24,7 +24,7 @@ const AddList = ({colors, onAdd}) => {
     };
 
     const addList = () => {
-        if(!inputValue) {
+        if (!inputValue) {
             alert('Enter list name');
             return;
         }
@@ -35,8 +35,10 @@ const AddList = ({colors, onAdd}) => {
                 const listObj = {...data, color: {name: color}};
                 onAdd(listObj);
                 onClose();
-            }).finally(() => {
-                setIsLoading(false);
+            }).catch(() => {
+            alert('Trouble with adding list!')
+        }).finally(() => {
+            setIsLoading(false);
         });
     };
     return (
@@ -50,7 +52,7 @@ const AddList = ({colors, onAdd}) => {
             ]}
             />
             {visiblePopup && <div className='add-list__popup'>
-                <div onClick={() => onClose()} className={"add-list__popup-close-btn"}><IoIosCloseCircle /> </div>
+                <div onClick={() => onClose()} className={"add-list__popup-close-btn"}><IoIosCloseCircle/></div>
                 <input value={inputValue}
                        onChange={e => setInputValue(e.target.value)}
                        className={`field`}
@@ -65,7 +67,7 @@ const AddList = ({colors, onAdd}) => {
                                    color={color.name}
                                    className={selectedColor === color.id && 'active'}
                             />
-                            ))}
+                        ))}
                 </div>
                 <button onClick={addList} className={`button`}>
                     {isLoading ? 'Adding...' : 'Add'}

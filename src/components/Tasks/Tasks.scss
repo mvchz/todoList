@@ -22,8 +22,46 @@
       }
     }
   }
+  &__form {
+    &-block {
+      margin-top: 20px;
+      .button{
+        margin-top: 15px;
+        margin-right: 10px;
+      }
+    }
+    &-new {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.15s ease-in-out;
+      &:hover{
+        opacity: 1;
+      }
+      .icon{
+        font-size: 20px;
+      }
+      .icon-text{
+        font-size: 16px;
+        margin-left: 19px;
+      }
+    }
+  }
+
   &__items{
     margin-top: 30px;
+    h2{
+      font-family: Montserrat, sans-serif;
+      font-weight: bold;
+      font-size: 22px;
+      text-align: center;
+      color: #C9D1D3;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+    }
     &-row{
       display: flex;
       align-items: center;

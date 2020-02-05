@@ -46,15 +46,30 @@ body{
   border: 0;
   padding: 10px 20px;
   cursor: pointer;
+  font-size: 14px;
   &:hover{
     background: darken(#4DD599, 6%);
   }
   &:active{
     background: darken(#4DD599, 12%);
   }
+  &:disabled {
+    background: #d8d8d8;
+  }
+  &--grey{
+    background: #adb7c7;
+    color: #444444;
+    &:hover{
+      background: darken(#adb7c7, 3%);
+    }
+    &:active{
+      background: darken(#adb7c7, 5%);
+    }
+  }
 }
 
 .field {
+  font-size: 14px;
   background: #FFFFFF;
   border: 1px solid #EFEFEF;
   box-sizing: border-box;

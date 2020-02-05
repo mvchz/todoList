@@ -6,6 +6,7 @@ import * as axios from "axios";
 const App = () => {
     const [lists, setLists] = useState(null);
     const [colors, setColors] = useState(null);
+    const [activeItem, setActiveItem] = useState(null);
 
     useEffect(() => {
         axios.get('http://localhost:3001/lists?_expand=color&_embed=tasks').then(({data}) => {
@@ -21,6 +22,26 @@ const App = () => {
         const newList = [...lists, obj];
         setLists(newList);
     };
+    const onAddTask = (listId, taskObj) => {
+        const newList = lists.map(item => {
+            if(item.id === listId) {
+                item.tasks = [...item.tasks, taskObj];
+            }
+            return item;
+        });
+        setLists(newList);
+    };
+
+
+    const onEditListTitle = (id, title) => {
+        const newList = lists.map(item => {
+            if (item.id === id) {
+                item.name = title;
+            }
+            return item;
+        });
+        setLists(newList);
+    };
 
     return (
         <div className="todo">
@@ -32,19 +53,27 @@ const App = () => {
                         active: true
                     }
                 ]}/>
+                {console.log(activeItem)}
                 { lists ? (<List
                         items={lists}
                         onRemove={id => {
                           const newLists = lists.filter(item => item.id !== id);
                           setLists(newLists);
-                          console.log(newLists,lists);
                       }}
+                      onClickItem={item => {
+                          setActiveItem(item)
+                      }}
+                      activeItem={activeItem}
                       isRemovable
                 />) : ('Download...')}
                 <AddList onAdd={onAddList} colors={colors}/>
             </div>
             <div className={"todo__tasks"}>
-                { lists && <Tasks list={lists[1]}/>}
+                { lists && activeItem
+                && <Tasks onEditTitle={onEditListTitle}
+                          onAddTask={onAddTask}
+                          list={activeItem}
+                />}
             </div>
         </div>
     );

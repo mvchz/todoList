@@ -19,8 +19,43 @@
 .tasks__title span:hover {
   opacity: 0.8;
 }
+.tasks__form-block {
+  margin-top: 20px;
+}
+.tasks__form-block .button {
+  margin-top: 15px;
+  margin-right: 10px;
+}
+.tasks__form-new {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.15s ease-in-out;
+}
+.tasks__form-new:hover {
+  opacity: 1;
+}
+.tasks__form-new .icon {
+  font-size: 20px;
+}
+.tasks__form-new .icon-text {
+  font-size: 16px;
+  margin-left: 19px;
+}
 .tasks__items {
   margin-top: 30px;
+}
+.tasks__items h2 {
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  text-align: center;
+  color: #C9D1D3;
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }
 .tasks__items-row {
   display: flex;

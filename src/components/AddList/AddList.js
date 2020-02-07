@@ -52,7 +52,9 @@ const AddList = ({colors, onAdd}) => {
             ]}
             />
             {visiblePopup && <div className='add-list__popup'>
-                <div onClick={() => onClose()} className={"add-list__popup-close-btn"}><IoIosCloseCircle/></div>
+                <div onClick={() => onClose()} className={"add-list__popup-close-btn"}>
+                    <IoIosCloseCircle/>
+                </div>
                 <input value={inputValue}
                        onChange={e => setInputValue(e.target.value)}
                        className={`field`}

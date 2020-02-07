@@ -26,9 +26,29 @@
       "colorId": 1
     },
     {
-      "name": "mk",
+      "name": "hello",
       "colorId": 6,
       "id": 6
+    },
+    {
+      "name": "new tasks",
+      "colorId": 6,
+      "id": 7
+    },
+    {
+      "name": "qwe",
+      "colorId": 2,
+      "id": 8
+    },
+    {
+      "name": "qq",
+      "colorId": 2,
+      "id": 9
+    },
+    {
+      "name": "qwew",
+      "colorId": 2,
+      "id": 10
     }
   ],
   "tasks": [
@@ -57,34 +77,16 @@
       "completed": false
     },
     {
-      "listId": 2,
-      "text": "hello",
-      "completed": false,
-      "id": 5
-    },
-    {
       "listId": 1,
-      "text": "ff",
+      "text": "hello",
       "completed": false,
       "id": 6
     },
     {
-      "listId": 1,
-      "text": "n",
+      "listId": 6,
+      "text": "hello",
       "completed": false,
       "id": 7
-    },
-    {
-      "listId": 1,
-      "text": "n",
-      "completed": false,
-      "id": 8
-    },
-    {
-      "listId": 1,
-      "text": "qwerty",
-      "completed": false,
-      "id": 9
     }
   ],
   "colors": [

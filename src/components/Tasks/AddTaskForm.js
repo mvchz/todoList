@@ -46,7 +46,9 @@ const AddTaskForm = ({list, onAddTask}) => {
                 <button disabled={isLoading} onClick={addTask} className={`button`}>
                     {isLoading ? 'Adding...' : 'Add task'}
                 </button>
-                <button onClick={toggleFormVisible} className={`button button--grey`}>Cancel</button>
+                <button onClick={toggleFormVisible} className={`button button--grey`}>
+                    Cancel
+                </button>
             </div>)}
         </div>
     );

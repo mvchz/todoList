@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './Tasks.scss';
 import {FiEdit3} from "react-icons/all";
 import * as axios from "axios";
 import AddTaskForm from "./AddTaskForm";
 import Task from "./Task";
+import {Link} from 'react-router-dom'
 
 const Tasks =
     ({
@@ -13,7 +14,10 @@ const Tasks =
          onAddTask,
          withoutEmpty,
          onRemoveTask,
+         onCompleteTask,
          onEditTask}) => {
+        
+        
         const editTitle = () => {
             const newTitle = window.prompt('Name of list', list.name);
             if (newTitle) {
@@ -28,16 +32,23 @@ const Tasks =
 
         return (
             <div className="tasks">
+                <div>
+
+                </div>
+                <Link to={`/lists/${list.id}`}>     
                 <h2 style={{color: list.color.hex}} className="tasks__title">
                     {list.name}
                     <span onClick={editTitle}><FiEdit3/></span>
                 </h2>
+                </Link>
+
                 <div className="tasks__items">
-                    {!withoutEmpty && !list.tasks.length && <h2>Tasks not Found</h2>}
-                    {list.tasks.map(task =>
+                    {!withoutEmpty && list.tasks && !list.tasks.length && <h2>Tasks not Found</h2>}
+                    {list.tasks && list.tasks.map(task =>
                         <Task key={task.id}
                               {...task}
                               list={list}
+                              onComplete={onCompleteTask}           
                               onRemove={onRemoveTask}
                               onEdit={onEditTask}
                         />)}

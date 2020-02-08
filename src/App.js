@@ -79,6 +79,27 @@ const App = () => {
         setLists(newList);
     };
 
+    const onCompleteTask = (listId, taskId, completed) => {
+        const newList = lists.map(list => {
+            if (list.id === listId) {
+                list.tasks = list.tasks.map(task => {
+                    if (task.id === taskId) {
+                        task.completed = completed
+                    }
+                    return task;
+                })
+            }
+            return list;
+        });
+        setLists(newList);
+        axios.patch(`http://localhost:3001/tasks/${taskId}`, {
+            completed
+        })
+            .catch(() => {
+                alert(`failed to update a task`);
+            })
+    }
+
     const onEditListTitle = (id, title) => {
         const newList = lists.map(item => {
             if (item.id === id) {
@@ -132,6 +153,9 @@ const App = () => {
                                key={list.id}
                                list={list}
                                withoutEmpty
+                               onRemoveTask={onRemoveTask}
+                               onEditTask={onEditTask}
+                                onCompleteTask={onCompleteTask}
                         />))}
                 </Route>
                 <Route path={'/lists/:id'}>
@@ -141,6 +165,7 @@ const App = () => {
                               list={activeItem}
                               onRemoveTask={onRemoveTask}
                               onEditTask={onEditTask}
+                              onCompleteTask={onCompleteTask}
                     />}
                 </Route>
 

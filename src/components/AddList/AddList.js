@@ -5,7 +5,7 @@ import Badge from "../Badge/Badge";
 import * as axios from 'axios'
 import './AddList.scss'
 
-const AddList = ({colors, onAdd}) => {
+const AddList = ({colors, onAdd, theme}) => {
     const [visiblePopup, setVisiblePopup] = useState(false);
     const [selectedColor, selectColor] = useState(3);
     const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +51,7 @@ const AddList = ({colors, onAdd}) => {
                 }
             ]}
             />
-            {visiblePopup && <div className='add-list__popup'>
+            {visiblePopup && <div className={theme && 'add-list__popup' || 'add-dark-list__popup'}>
                 <div onClick={() => onClose()} className={"add-list__popup-close-btn"}>
                     <IoIosCloseCircle/>
                 </div>

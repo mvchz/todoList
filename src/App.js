@@ -5,14 +5,23 @@ import {Route} from "react-router-dom";
 import {AddList, List, Tasks} from './components'
 import * as axios from "axios";
 
+import {GiUbisoftSun} from 'react-icons/all';
 import {AiOutlineMenu} from 'react-icons/all';
+import {IoIosMoon} from 'react-icons/all';
 
 const App = () => {
     const [lists, setLists] = useState(null);
     const [colors, setColors] = useState(null);
     const [activeItem, setActiveItem] = useState(null);
+    const [changeTheme, setChangeTheme] = useState(true);
+    
+    const toogleTheme = () => {
+        setChangeTheme(!changeTheme);
+        console.log(changeTheme);
+    }
 
     let history = useHistory();
+
     useEffect(() => {
         axios.get('http://localhost:3001/lists?_expand=color&_embed=tasks').then(({data}) => {
             setLists(data);
@@ -118,9 +127,10 @@ const App = () => {
         }
     }, [lists, history.location.pathname]);
 
+    const theme = changeTheme;
     return (
-        <div className="todo">
-            <div className={"todo__sidebar"}>
+            <div className={ changeTheme && "todo" || "todos"}>
+            <div className={ changeTheme && "todo__sidebar" || "todos__sidebar"}>
                 <List onClickItem={() => {
                     history.push(`/`);
                 }}
@@ -141,11 +151,18 @@ const App = () => {
                         history.push(`/lists/${list.id}`);
                     }}
                     activeItem={activeItem}
+                    theme={theme}
                     isRemovable
                 />) : ('Download...')}
-                <AddList onAdd={onAddList} colors={colors}/>
+                <AddList theme={theme} onAdd={onAddList} colors={colors}/>
             </div>
             <div className={"todo__tasks"}>
+                <div onClick={toogleTheme} className='day_night__theme'>
+                    {changeTheme ?
+                    <span><GiUbisoftSun></GiUbisoftSun></span>
+                    : <span><IoIosMoon></IoIosMoon></span>
+                    }
+                </div>
                 <Route exact path="/">
                     {lists && lists.map(list => (
                         <Tasks onEditTitle={onEditListTitle}
@@ -171,6 +188,7 @@ const App = () => {
 
             </div>
         </div>
+        
     );
 };
 

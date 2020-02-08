@@ -16,8 +16,8 @@ const Tasks =
          onRemoveTask,
          onCompleteTask,
          onEditTask}) => {
-        
-        
+    
+
         const editTitle = () => {
             const newTitle = window.prompt('Name of list', list.name);
             if (newTitle) {
@@ -32,9 +32,6 @@ const Tasks =
 
         return (
             <div className="tasks">
-                <div>
-
-                </div>
                 <Link to={`/lists/${list.id}`}>     
                 <h2 style={{color: list.color.hex}} className="tasks__title">
                     {list.name}

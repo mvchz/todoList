@@ -5,7 +5,14 @@ import Badge from "../Badge/Badge";
 import {IoIosCloseCircle} from "react-icons/all";
 import * as axios from "axios";
 
-const List = ({items, isRemovable, onClick, onRemove, onClickItem, activeItem}) => {
+const List = ({
+    items,
+     isRemovable,
+      onClick,
+       onRemove,
+        onClickItem,
+        theme,
+         activeItem}) => {
 
     const removeList = (item) => {
         if (window.confirm('You really wanna delete list')){
@@ -17,13 +24,13 @@ const List = ({items, isRemovable, onClick, onRemove, onClickItem, activeItem}) 
 
     return (
         <Fragment>
-            <ul onClick={onClick} className="list">
+            <ul onClick={onClick} className={theme && "list" || "list-dark"}>
                 {
                     items.map((item, index) =>
                         <li key={index}
                             className={classNames(item.className, {
-                                active: item.active
-                                    ? item.active
+                                active: item.active && activeItem
+                                ? item.active
                                     : activeItem && activeItem.id === item.id})}
                             onClick={onClickItem ? () => onClickItem(item) : null}
                         >
@@ -33,7 +40,8 @@ const List = ({items, isRemovable, onClick, onRemove, onClickItem, activeItem}) 
                             </i>
                             <span>{item.name}{item.tasks && `(${item.tasks.length})`}</span>
                             {isRemovable &&
-                            <div onClick={() => removeList(item)} className='list__remove-icon'>
+                            <div onClick={() => removeList(item)} 
+                                className={ theme && 'list__remove-icon' || 'list-dark__remove-icon'}>
                                 <IoIosCloseCircle/>
                             </div>}
                         </li>)

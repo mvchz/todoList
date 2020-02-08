@@ -1,54 +1,25 @@
-.list{
-  overflow: paged-y;
-  $self: &;
-  margin-bottom: 30px;
-  &__add-button{
-    opacity: 0.4;
-    &:hover{
-      opacity: 1;
-    }
-  }
-  &__remove-icon{
-    opacity: 0;
-    font-size: 18px;
-    padding-top: 2px;
-  }
+  @import '../../styles/mixins.scss';
+
+.list-dark{
+  @include list_sidebar;
   li{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 10px 12px;
+    &:hover{
+      background: rgba(255,255,255, 0.4);
+    }
+    &.active{
+      background: blueviolet;
+    }
+  }
+}
 
-    &:hover #{$self}__remove-icon{
-      opacity: 0.3;
-    }
-    #{$self}__remove-icon {
-      opacity: 0;
-      transition: opacity 0.15s ease-in-out;
-
-      &:hover{
-        opacity: 0.8;
-      }
-    }
-    span{
-      flex: 1;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      width: 160px;
-      white-space: nowrap;
-    }
+.list{
+  @include list_sidebar;
+  li{
     &:hover{
       background: rgba(255,255,255, 0.4);
     }
     &.active{
       background: #FFFFFF;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-      border-radius: 4px;
-    }
-    i{
-      display: inline-flex;
-      margin-right: 10px;
-      font-size: 18px;
     }
   }
 }

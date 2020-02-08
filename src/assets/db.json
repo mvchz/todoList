@@ -24,6 +24,16 @@
       "id": 5,
       "name": "Self",
       "colorId": 1
+    },
+    {
+      "name": "qw",
+      "colorId": 7,
+      "id": 6
+    },
+    {
+      "name": "qwe",
+      "colorId": 6,
+      "id": 7
     }
   ],
   "tasks": [
@@ -37,7 +47,7 @@
       "id": 2,
       "listId": 2,
       "text": "Learn Patters",
-      "completed": false
+      "completed": true
     },
     {
       "id": 3,
@@ -50,6 +60,18 @@
       "listId": 2,
       "text": "Redux (redux-observable, redux-saga)",
       "completed": false
+    },
+    {
+      "listId": 6,
+      "text": "new task",
+      "completed": false,
+      "id": 5
+    },
+    {
+      "listId": 1,
+      "text": "new ",
+      "completed": false,
+      "id": 6
     }
   ],
   "colors": [

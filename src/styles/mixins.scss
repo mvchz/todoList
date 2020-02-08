@@ -1,0 +1,127 @@
+// addList component
+@mixin add_list {
+  background: white;
+  &__popup {
+    width: 235px;
+    height: 150px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 18px;
+    position: relative;
+    top: -25px;
+    left: 10px;
+    button{
+      width: 100%;
+      margin-top: 15px;
+    }
+    &-close-btn{
+      position: absolute;
+      right: -8px;
+      top: -8px;
+      cursor: pointer;
+      font-size: 22px;
+    }
+    &-colors{
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      .badge{
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+        position: static;
+        border: 2px solid transparent;
+        &.active{
+          border: 2px solid #525252;
+        }
+      }
+    }
+  }
+}
+// App component 
+@mixin app_full{
+  display: flex;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 850px;
+  height: calc(100vh - 300px);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border-radius: 10px;
+  font-size: 14px;
+  &__sidebar{
+    width: 200px;
+    height: calc(100% - 120px);
+    padding: 60px 20px;
+  }
+  &__tasks{
+    flex:1;
+    padding: 60px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    }
+  }
+}
+// List component
+@mixin list_sidebar{
+  overflow: paged-y;
+  $self: &;
+  margin-bottom: 30px;
+  &__add-button{
+    opacity: 0.4;
+    &:hover{
+      opacity: 1;
+    }
+  }
+  &__remove-icon{
+    opacity: 0;
+    font-size: 18px;
+    padding-top: 2px;
+  }
+  li{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 12px;
+    &:hover #{$self}__remove-icon{
+      opacity: 0.3;
+    }
+    #{$self}__remove-icon {
+      opacity: 0;
+      transition: opacity 0.15s ease-in-out;
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+    span{
+      flex: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 160px;
+      white-space: nowrap;
+    }
+    &:hover{
+      border-radius: 3px;
+    }
+    &.active{
+      background: #FFFFFF;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+      border-radius: 4px;
+    }
+    i{
+      display: inline-flex;
+      margin-right: 10px;
+      font-size: 18px;
+    }
+  }
+}
